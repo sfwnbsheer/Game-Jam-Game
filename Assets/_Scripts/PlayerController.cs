@@ -26,6 +26,9 @@ namespace TarodevController
         public event Action<bool, float> GroundedChanged;
         public event Action Jumped;
 
+        //Flip
+        private bool _facingRight = true;
+
         #endregion
 
         private float _time;
@@ -72,10 +75,41 @@ namespace TarodevController
 
             HandleJump();
             HandleDirection();
+            Flip();             
             HandleGravity();
 
             ApplyMovement();
         }
+
+
+        private void Flip()
+        {
+            if (_frameInput.Move.x > 0 && !_facingRight)
+            {
+                TurnRight();
+            }
+            else if (_frameInput.Move.x < 0 && _facingRight)
+            {
+                TurnLeft();
+            }
+        }
+
+        private void TurnRight()
+        {
+            _facingRight = true;
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
+
+        private void TurnLeft()
+        {
+            _facingRight = false;
+            Vector3 scale = transform.localScale;
+            scale.x = -Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
+
 
         #region Collisions
 
