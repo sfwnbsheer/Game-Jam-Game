@@ -29,6 +29,9 @@ namespace TarodevController
         //Flip
         private bool _facingRight = true;
 
+        //Animations
+        [SerializeField] private Animator _animator;
+
         #endregion
 
         private float _time;
@@ -77,7 +80,7 @@ namespace TarodevController
             HandleDirection();
             Flip();             
             HandleGravity();
-
+            HandleAnimations();
             ApplyMovement();
         }
 
@@ -109,6 +112,21 @@ namespace TarodevController
             scale.x = -Mathf.Abs(scale.x);
             transform.localScale = scale;
         }
+
+        private void HandleAnimations()
+        {
+            if (_animator == null) return;
+
+            // Horizontal movement (Idle / Walk)
+            _animator.SetFloat("speed", Mathf.Abs(_frameVelocity.x));
+
+            // Grounded or not
+            _animator.SetBool("isGrounded", _grounded);
+
+            // Vertical velocity (Jump / Fall)
+            _animator.SetFloat("yVelocity", _frameVelocity.y);
+        }
+
 
 
         #region Collisions
