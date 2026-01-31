@@ -1,18 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MaskCollect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string maskName; // "Hanuman_Mask", "Agni_Mask", "Theyyam_Mask"
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (!other.CompareTag("Player")) return;
+
+        // Get all masks from player
+        Transform player = other.transform;
+
+        foreach (Transform child in player)
+        {
+            // Turn OFF all masks
+            if (child.name.Contains("_Mask"))
+            {
+                child.gameObject.SetActive(false);
+            }
+
+            // Turn ON the collected mask
+            if (child.name == maskName)
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
+
+        // Remove platform mask
+        gameObject.SetActive(false);
     }
 }
