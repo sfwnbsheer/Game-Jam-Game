@@ -20,6 +20,9 @@ namespace TarodevController
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
 
+        [Header("Mask Modifiers")]
+        [SerializeField] private float _jumpPowerMultiplier = 1f;
+
         #region Interface
 
         public Vector2 FrameInput => _frameInput.Move;
@@ -28,6 +31,9 @@ namespace TarodevController
 
         //Flip
         private bool _facingRight = true;
+
+        //Animations
+        [SerializeField] private Animator _animator;
 
         #endregion
 
@@ -77,7 +83,7 @@ namespace TarodevController
             HandleDirection();
             Flip();             
             HandleGravity();
-
+            HandleAnimations();
             ApplyMovement();
         }
 
@@ -108,6 +114,20 @@ namespace TarodevController
             Vector3 scale = transform.localScale;
             scale.x = -Mathf.Abs(scale.x);
             transform.localScale = scale;
+        }
+
+        private void HandleAnimations()
+        {
+            if (_animator == null) return;
+
+            // Horizontal movement (Idle / Walk)
+            _animator.SetFloat("speed", Mathf.Abs(_frameVelocity.x));
+
+            // Grounded or not
+            _animator.SetBool("isGrounded", _grounded);
+
+            // Vertical velocity (Jump / Fall)
+            _animator.SetFloat("yVelocity", _frameVelocity.y);
         }
 
 
@@ -178,9 +198,20 @@ namespace TarodevController
             _timeJumpWasPressed = 0;
             _bufferedJumpUsable = false;
             _coyoteUsable = false;
-            _frameVelocity.y = _stats.JumpPower;
+            _frameVelocity.y = _stats.JumpPower * _jumpPowerMultiplier;
             Jumped?.Invoke();
         }
+
+        public void SetJumpMultiplier(float multiplier)
+        {
+            _jumpPowerMultiplier = multiplier;
+        }
+
+        public void ResetJumpMultiplier()
+        {
+            _jumpPowerMultiplier = 1f;
+        }
+
 
         #endregion
 
