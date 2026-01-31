@@ -144,3 +144,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maskName: Theyyam_Mask
+  jumpMultiplier: 0

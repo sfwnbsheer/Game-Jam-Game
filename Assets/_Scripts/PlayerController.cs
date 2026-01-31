@@ -20,7 +20,8 @@ namespace TarodevController
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
 
-
+        [Header("Mask Modifiers")]
+        [SerializeField] private float _jumpPowerMultiplier = 1f;
 
         #region Interface
 
@@ -130,7 +131,6 @@ namespace TarodevController
         }
 
 
-
         #region Collisions
 
         private float _frameLeftGrounded = float.MinValue;
@@ -198,9 +198,20 @@ namespace TarodevController
             _timeJumpWasPressed = 0;
             _bufferedJumpUsable = false;
             _coyoteUsable = false;
-            _frameVelocity.y = _stats.JumpPower;
+            _frameVelocity.y = _stats.JumpPower * _jumpPowerMultiplier;
             Jumped?.Invoke();
         }
+
+        public void SetJumpMultiplier(float multiplier)
+        {
+            _jumpPowerMultiplier = multiplier;
+        }
+
+        public void ResetJumpMultiplier()
+        {
+            _jumpPowerMultiplier = 1f;
+        }
+
 
         #endregion
 
