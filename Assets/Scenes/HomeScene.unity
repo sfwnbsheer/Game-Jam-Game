@@ -519,7 +519,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 364148987}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 364148989}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &364148987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1861,7 +1873,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 850252966}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 850252968}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &850252966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2158,7 +2182,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 983314190}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 983314192}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &983314190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2428,7 +2464,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1105114460}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1105114462}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1105114460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3408,7 +3456,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1656853441}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1656853443}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1656853441
 MonoBehaviour:
   m_ObjectHideFlags: 0

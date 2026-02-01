@@ -26,6 +26,6 @@ public class LevelButton : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene("Level" + levelNumber);
+        SceneManager.LoadScene("Level_" + levelNumber);
     }
 }

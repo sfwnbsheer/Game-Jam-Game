@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Mask
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -44,4 +45,10 @@ TagManager:
     locked: 0
   - name: Mask
     uniqueID: 853343121
+    locked: 0
+  - name: BackGround
+    uniqueID: 2036945121
+    locked: 0
+  - name: backGRound2
+    uniqueID: 3664436237
     locked: 0
