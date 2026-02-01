@@ -8,7 +8,7 @@ public class hitPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool playerhit = false;
-    public float attackRange = 2f;
+    public float attackRange = 1.8f;
     public LayerMask enemyLayer;
     void Start()
     {
@@ -32,6 +32,6 @@ public class hitPlayer : MonoBehaviour
 
     bool PlayerInRange()
     {
-        return Physics2D.OverlapCircle(transform.position, attackRange, enemyLayer);
+         return Physics2D.OverlapCircle(transform.position, attackRange, enemyLayer);
     }
 }

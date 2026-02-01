@@ -1,27 +1,33 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HomeUIController : MonoBehaviour
 {
-    public GameObject homePanel;
-    public GameObject levelPanel;
+    //public GameObject homePanel;
+    //public GameObject levelPanel;
 
     void Start()
     {
-        homePanel.SetActive(true);
-        levelPanel.SetActive(false);
+        //homePanel.SetActive(true);
+        //levelPanel.SetActive(false);
     }
-
-    public void OpenLevelPanel()
+    public void Play()
     {
-        homePanel.SetActive(false);
-        levelPanel.SetActive(true);
+        SceneManager.LoadScene(1);
     }
+    
 
-    public void BackToHome()
-    {
-        levelPanel.SetActive(false);
-        homePanel.SetActive(true);
-    }
+    //public void OpenLevelPanel()
+    //{
+    //    homePanel.SetActive(false);
+    //    //levelPanel.SetActive(true);
+    //}
+
+    //public void BackToHome()
+    //{
+    //    //levelPanel.SetActive(false);
+    //    homePanel.SetActive(true);
+    //}
 
     public void ExitGame()
     {

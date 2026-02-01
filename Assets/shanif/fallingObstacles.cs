@@ -20,7 +20,7 @@ public class FallingObstacle : MonoBehaviour
         if (hasFallen) return;
 
         hasFallen = true;
-        rb.gravityScale = 2; // start falling
+        rb.gravityScale = 4; // start falling
     }
 
   

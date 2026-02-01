@@ -27,6 +27,10 @@ namespace TarodevController
         public bool hasStrength = false;   // set by mask
         public bool isPushing = false;     // set by rock
 
+        // SFX
+        private bool wasGrounded;
+        private float footstepTimer;
+        [SerializeField] private float footstepInterval = 0.35f;
 
         #region Interface
 
@@ -86,10 +90,11 @@ namespace TarodevController
 
             HandleJump();
             HandleDirection();
-            Flip();             
+            Flip();
             HandleGravity();
             HandleAnimations();
             ApplyMovement();
+            HandleWalkSFX();
         }
 
 
@@ -215,9 +220,32 @@ namespace TarodevController
             _timeJumpWasPressed = 0;
             _bufferedJumpUsable = false;
             _coyoteUsable = false;
+
             _frameVelocity.y = _stats.JumpPower * _jumpPowerMultiplier;
+
+            AudioManager.Instance?.PlayJump();
+
             Jumped?.Invoke();
         }
+
+        private void HandleWalkSFX()
+        {
+            if (!_grounded || Mathf.Abs(_frameVelocity.x) < 0.1f || isPushing)
+            {
+                footstepTimer = 0f;
+                return;
+            }
+
+            footstepTimer += Time.fixedDeltaTime;
+
+            if (footstepTimer >= footstepInterval)
+            {
+                AudioManager.Instance?.PlayWalk();
+                footstepTimer = 0f;
+            }
+        }
+
+
 
         public void SetJumpMultiplier(float multiplier)
         {
