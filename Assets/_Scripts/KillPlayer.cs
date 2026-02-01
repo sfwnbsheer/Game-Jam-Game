@@ -1,15 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DeathZone : MonoBehaviour
+public class KillPlayer : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             string currentScene = SceneManager.GetActiveScene().name;
             FindObjectOfType<SceneFader>().FadeToScene(currentScene);
-            AudioManager.Instance?.PlayerDie();
         }
     }
 }

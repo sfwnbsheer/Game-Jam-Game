@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 5431812371874766630}
   - component: {fileID: 5610688651081416241}
   - component: {fileID: 4559569988297683870}
+  - component: {fileID: 3503396641447050528}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Player
@@ -422,6 +423,7 @@ MonoBehaviour:
   _jumpPowerMultiplier: 1
   hasStrength: 0
   isPushing: 0
+  footstepInterval: 0.35
   _animator: {fileID: 5610688651081416241}
 --- !u!95 &5610688651081416241
 Animator:
@@ -459,3 +461,16 @@ MonoBehaviour:
   maskName: 
   vamananJumpMultiplier: 1.5
   rockRb: {fileID: 0}
+--- !u!114 &3503396641447050528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348913875285473340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634e9b01a81c10646ac4fb3ffafa9338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUp: {fileID: 0}
