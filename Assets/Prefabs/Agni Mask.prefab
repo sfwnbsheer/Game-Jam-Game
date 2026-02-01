@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7717338920034266654}
   - component: {fileID: 4963310860517542641}
   - component: {fileID: 5106076486394415836}
+  - component: {fileID: 9121735366352585936}
+  - component: {fileID: 2314144524114098830}
   m_Layer: 0
   m_Name: Agni Mask
   m_TagString: Mask
@@ -144,5 +146,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maskName: Agni_Mask
-  agniJumpMultiplier: 1.5
+  vamananJumpMultiplier: 1.5
   rockRb: {fileID: 0}
+--- !u!95 &9121735366352585936
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5107300709408976037}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c119afcae57c894ebcf150eb01009ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2314144524114098830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5107300709408976037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1e9aa68305e1d44ba6e669cd7bf870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatHeight: 0.25
+  floatSpeed: 2
+  rotateSpeed: 50
