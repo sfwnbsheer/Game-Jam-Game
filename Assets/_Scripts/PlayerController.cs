@@ -23,6 +23,11 @@ namespace TarodevController
         [Header("Mask Modifiers")]
         [SerializeField] private float _jumpPowerMultiplier = 1f;
 
+        //Push
+        public bool hasStrength = false;   // set by mask
+        public bool isPushing = false;     // set by rock
+
+
         #region Interface
 
         public Vector2 FrameInput => _frameInput.Move;
@@ -120,15 +125,27 @@ namespace TarodevController
         {
             if (_animator == null) return;
 
-            // Horizontal movement (Idle / Walk)
-            _animator.SetFloat("speed", Mathf.Abs(_frameVelocity.x));
+            float speed = Mathf.Abs(_frameVelocity.x);
+            bool tryingToMove = speed > 0.1f;
 
-            // Grounded or not
+            // PUSH OVERRIDE (highest priority)
+            if (isPushing && hasStrength && tryingToMove && _grounded)
+            {
+                _animator.SetBool("isPushing", true);
+                _animator.SetFloat("speed", 0f); // IMPORTANT: stop walk override
+            }
+            else
+            {
+                _animator.SetBool("isPushing", false);
+                _animator.SetFloat("speed", speed);
+            }
+
             _animator.SetBool("isGrounded", _grounded);
-
-            // Vertical velocity (Jump / Fall)
             _animator.SetFloat("yVelocity", _frameVelocity.y);
+
+            Debug.Log($"Push={isPushing}, Strength={hasStrength}, Speed={_frameVelocity.x}");
         }
+
 
 
         #region Collisions
