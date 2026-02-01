@@ -3,24 +3,30 @@ using TarodevController;
 
 public class MaskCollect : MonoBehaviour
 {
-    public string maskName; // "Hanuman_Mask", "Agni_Mask", "Theyyam_Mask"
+    public string maskName;
 
-    [Header("Agni Mask Ability")]
-    public float agniJumpMultiplier = 1.5f; // extra jump ONLY for Agni
+    [Header("Vamanan Mask Ability")]
+    public float vamananJumpMultiplier = 1.5f;
+
+    [Header("Hanuman Mask Ability")]
+    public Rigidbody2D rockRb;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
 
-        Transform player = other.transform;
         PlayerController controller = other.GetComponent<PlayerController>();
-        if (controller == null) return;
+        Rigidbody2D playerRb = other.GetComponent<Rigidbody2D>();
 
-        // Always reset jump when switching masks
+        if (controller == null || playerRb == null) return;
+
+        // Reset player state
+        playerRb.constraints = RigidbodyConstraints2D.FreezeRotation;
         controller.ResetJumpMultiplier();
+        controller.hasStrength = false; // reset first
 
-        // Handle mask visuals
-        foreach (Transform child in player)
+        // Mask visuals
+        foreach (Transform child in other.transform)
         {
             if (child.name.Contains("_Mask"))
                 child.gameObject.SetActive(false);
@@ -29,13 +35,18 @@ public class MaskCollect : MonoBehaviour
                 child.gameObject.SetActive(true);
         }
 
-        // Apply Agni ability ONLY
-        if (maskName == "Agni_Mask")
+        // Mask-specific logic
+        switch (maskName)
         {
-            controller.SetJumpMultiplier(agniJumpMultiplier);
+            case "Vamanan_Mask":
+                controller.SetJumpMultiplier(vamananJumpMultiplier);
+                break;
+
+            case "Hanuman_Mask":
+                controller.hasStrength = true; //  ENABLE STRENGTH
+                break;
         }
 
-        // Remove platform mask
         gameObject.SetActive(false);
     }
 }
